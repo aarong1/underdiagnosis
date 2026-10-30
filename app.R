@@ -24,7 +24,7 @@ library(profvis)
 #      file = 'file.RData'
 #      )
 
-load('file.RData')
+load('file.RData',envir = globalenv())
 
 # source('./data_model.R')
 # source('./ckd.R')
