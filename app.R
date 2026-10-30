@@ -86,6 +86,7 @@ lapply(ls(globalenv()), function(x){
     }}
   
 })
+
 lapply(ls(environment()), function(x){
   y <<- x
   obj <- get(x)
