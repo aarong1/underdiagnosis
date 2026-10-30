@@ -111,7 +111,7 @@ lapply(ls(environment()), function(x){
       
       # x<<-obj
       # print (obj)
-      assign(x, obj, envir = globalenv())
+      assign(x, obj, envir = environment())
     }}
   
 })
