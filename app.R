@@ -57,7 +57,7 @@ source('modules/pivot_module/pivottable_module.R')
 # load('sppg2.RData')
 
 # print(environment())
-
+print('globalenvironment')
 lapply(ls(globalenv()), function(x){
   y <<- x
   obj <- get(x)
@@ -86,7 +86,7 @@ lapply(ls(globalenv()), function(x){
     }}
   
 })
-
+print('environment')
 lapply(ls(environment()), function(x){
   y <<- x
   obj <- get(x)
