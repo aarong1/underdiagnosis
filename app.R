@@ -57,7 +57,8 @@ source('modules/pivot_module/pivottable_module.R')
 # load('sppg2.RData')
 
 # print(environment())
-lapply(ls(environment()), function(x){
+
+lapply(ls(globalenv()), function(x){
   y <<- x
   obj <- get(x)
   print(x)
@@ -66,6 +67,7 @@ lapply(ls(environment()), function(x){
     
     if(!is.null(obj$x$theme) & obj$x$theme != ''){
       print(obj$x$theme)
+      
       # print(x)
       # print(obj$x$theme)
       # obj$dependencies[[1]]$src$file <- system.file("htmlwidgets/lib/echarts-6.0.0/themes", package = "echarts4r")#htmltools::htmlDependency(name = obj$x$theme, version = "1.0.0",
@@ -78,12 +80,34 @@ lapply(ls(environment()), function(x){
                                                           script = paste0(obj$x$theme, ".js")
       )
       
-      print(
-      htmltools::htmlDependency(name = obj$x$theme, version = "1.0.0", 
-                                src = system.file("htmlwidgets/lib/echarts-6.0.0/themes", package = "echarts4r"),
-                                script = paste0(obj$x$theme, ".js")
-                                )
+      # x<<-obj
+      # print (obj)
+      assign(x, obj, envir = globalenv())
+    }}
+  
+})
+lapply(ls(environment()), function(x){
+  y <<- x
+  obj <- get(x)
+  print(x)
+  if('echarts4r' %in% class(obj) ){
+    print('T')
+    
+    if(!is.null(obj$x$theme) & obj$x$theme != ''){
+      print(obj$x$theme)
+      
+      # print(x)
+      # print(obj$x$theme)
+      # obj$dependencies[[1]]$src$file <- system.file("htmlwidgets/lib/echarts-6.0.0/themes", package = "echarts4r")#htmltools::htmlDependency(name = obj$x$theme, version = "1.0.0",
+      #                         src = system.file("htmlwidgets/lib/echarts-6.0.0/themes", package = "echarts4r"),
+      #                        script = paste0(obj$x$theme, ".js")
+      # )
+      
+      obj$dependencies[[1]] <-  htmltools::htmlDependency(name = obj$x$theme, version = "1.0.0", 
+                                                          src = system.file("htmlwidgets/lib/echarts-6.0.0/themes", package = "echarts4r"),
+                                                          script = paste0(obj$x$theme, ".js")
       )
+      
       # x<<-obj
       # print (obj)
       assign(x, obj, envir = globalenv())
