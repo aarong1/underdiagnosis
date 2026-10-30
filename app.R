@@ -865,7 +865,7 @@ text-decoration:none !important;
                                           # div(class= 'overflow-scroll w-75 text-bg-black ',
                                           #reactable(class = 'text-bg-default',
                                           
-                                          reactable(static = T , width = 700,
+                                          reactable(static = F , width = 700,
                                                     class = 'text-bg-default overflow-hidden p-2 rounded-2',
                                                     master_data_table)                                          
                                           # )
