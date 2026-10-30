@@ -78,7 +78,12 @@ lapply(ls(environment()), function(x){
                                                           script = paste0(obj$x$theme, ".js")
       )
       
-      
+      print(
+      htmltools::htmlDependency(name = obj$x$theme, version = "1.0.0", 
+                                src = system.file("htmlwidgets/lib/echarts-6.0.0/themes", package = "echarts4r"),
+                                script = paste0(obj$x$theme, ".js")
+                                )
+      )
       # x<<-obj
       # print (obj)
       assign(x, obj, envir = globalenv())
