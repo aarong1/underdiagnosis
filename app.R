@@ -26,8 +26,6 @@ library(profvis)
 
 load('file.RData')
 
-
-
 # source('./data_model.R')
 # source('./ckd.R')
 # source('./af.R')
@@ -112,6 +110,8 @@ lapply(ls(environment()), function(x){
       # x<<-obj
       # print (obj)
       assign(x, obj, envir = environment())
+      assign(x, obj, envir = globalenv())
+      
     }}
   
 })
@@ -616,7 +616,6 @@ text-decoration:none !important;
                                      HTML('<h7><span class="badge rounded-pill bg-opacity-100 text-secondary bg-danger ">Atrial Fibrillation</span></h7>'),
                                      HTML('<div><span class="badge rounded-pill bg-opacity-100 bg-danger "></span></div>'),
                                      # ),
-                                     
                                      
                                      
                                      
